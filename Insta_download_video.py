@@ -15,12 +15,8 @@ def download_insta_video ():
     url = Insta_url + Tail
 
     reponse = requests.get(url, headers=header).json()
-    print(reponse)
 
     video_location = reponse["graphql"]["shortcode_media"]['video_url']
-    print(video_location)
-    # hd_video_response=requests.get(video_location,stream=True)
-    # print(hd_video_response)
     file_size_request = requests.get(video_location, stream=True)
     file_size = int(file_size_request.headers['Content-Length'])
     block_size = 1024
